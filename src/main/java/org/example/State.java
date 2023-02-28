@@ -64,19 +64,6 @@ public class State {
         return this.flame;
     }
 
-    public int getSpeedA(){
-        return  this.personA.getSpeed();
-    }
-    public int getSpeedB(){
-        return  this.personB.getSpeed();
-    }
-    public int getSpeedC(){
-        return  this.personC.getSpeed();
-    }
-    public int getSpeedEmpty(){
-        return  this.empty.getSpeed();
-    }
-
     public void setDeadEnd(boolean b){
         this.deadEnd = b;
     }
