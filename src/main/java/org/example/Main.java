@@ -16,21 +16,21 @@ public class Main {
                 node.setNext1(new Node(speedA, speedB, speedC, false, false, node.getC(),
                         (node.getFlame()-max), null, null, null));
             }
-            else if (node.getA() && node.getB()) node.setDeadEnd(true);
+            else if (node.getA() && node.getB() && !node.getC()) node.setDeadEnd(true);
 
             max = speedA > speedC ? speedA : speedC;
             if (node.getFlame()-max >= 0 && node.getA() && node.getC()){
                 node.setNext2(new Node(speedA, speedB, speedC, false, node.getB(), false,
                         (node.getFlame()-max), null, null, null));
             }
-            else if (node.getA() && node.getC()) node.setDeadEnd(true);
+            else if (node.getA() && node.getC() && !node.getB()) node.setDeadEnd(true);
 
             max = speedB > speedC ? speedB : speedC;
             if (node.getFlame()-max >= 0 && node.getB() && node.getC()){
                 node.setNext3(new Node(speedA, speedB, speedC, node.getA(), false, false,
                         (node.getFlame()-max), null, null, null));
             }
-            else if (node.getB() && node.getC()) node.setDeadEnd(true);
+            else if (node.getB() && node.getC() && !node.getA()) node.setDeadEnd(true);
 
             if (node.getNext1()!=null) {
                 addNode(node.next1, speedA, speedB, speedC, true);
@@ -47,19 +47,19 @@ public class Main {
                 node.setNext1(new Node(speedA, speedB, speedC, true, node.getB(), node.getC(),
                         (node.getFlame()-speedA), null, null, null));
             }
-            else if (node.getA() == false) node.setDeadEnd(true);
+            else if (node.getA() == false && node.getB() && node.getC()) node.setDeadEnd(true);
 
             if (node.getFlame()-speedB >= 0 && node.getB() == false){
                 node.setNext2(new Node(speedA, speedB, speedC, node.getA(), true, node.getC(),
                         (node.getFlame()-speedB), null, null, null));
             }
-            else if (node.getB() == false) node.setDeadEnd(true);
+            else if (node.getB() == false && node.getA() && node.getC()) node.setDeadEnd(true);
 
             if (node.getFlame()-speedC >= 0 && !node.getC()){
                 node.setNext3(new Node(speedA, speedB, speedC, node.getA(), node.getB(), true,
                         (node.getFlame()-speedC), null, null, null));
             }
-            else if (node.getC() == false) node.setDeadEnd(true);
+            else if (node.getC() == false && node.getA() && node.getB()) node.setDeadEnd(true);
 
             if (node.getNext1()!=null) addNode(node.next1, speedA, speedB, speedC, false);
 
